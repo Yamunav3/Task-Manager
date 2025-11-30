@@ -1,4 +1,4 @@
-    TaskMaster - Personal Task Management System
+TaskMaster - Personal Task Management System
 
 A modern, full-stack web application for managing daily tasks with user authentication, real-time progress tracking, and an intuitive dashboard.
 
@@ -148,26 +148,3 @@ npm start
 Visit:
 
 http://localhost:3000
-
-🎯 Usage
-
-Open app in browser
-
-Register a new user
-
-Log in with your credentials
-
-Start managing your tasks
-
-Filter, search, sort tasks
-
-Toggle dark mode anytime
-
-👨‍💻 Developer
-
-Built with ❤️ by Yamuna
-Designed as a personal productivity tool using modern full-stack development technologies.
-
-📄 License
-
-This project is open-source and available for personal and educational use.
