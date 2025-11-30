@@ -1,4 +1,4 @@
-TaskMaster - Personal Task Management System
+    TaskMaster - Personal Task Management System
 
 A modern, full-stack web application for managing daily tasks with user authentication, real-time progress tracking, and an intuitive dashboard.
 
