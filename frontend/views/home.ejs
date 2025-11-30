@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to TaskMaster</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #2d3748;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 30px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+    }
+
+    /* Add padding to body to account for fixed header */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      padding-top: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #4a90e2;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-login {
+      color: #667eea;
+      border-color: #667eea;
+      background: transparent;
+    }
+
+    .btn-login:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-signup {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      border: none;
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    }
+
+    .hero {
+      max-width: 800px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+
+    .hero .subtitle {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #4a5568;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      color: #718096;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 16px 40px;
+      font-size: 18px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+    }
+
+    .btn-secondary {
+      padding: 16px 40px;
+      font-size: 18px;
+      color: #667eea;
+      border: 2px solid #667eea;
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      background: #667eea;
+      color: white;
+      border-color: #667eea;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .feature-card {
+      background: white;
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(102, 126, 234, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+      border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #2d3748;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: #718096;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      color: #718096;
+      font-size: 14px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero .subtitle {
+        font-size: 20px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">📋</div>
+      <span>TaskMaster</span>
+    </div>
+    <nav class="nav-links">
+      <a href="/login" class="btn btn-login">Login</a>
+      <a href="/register" class="btn btn-signup">Sign Up</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="hero">
+      <h1>Welcome to Personal Task Manager</h1>
+      <p class="subtitle">Your Productivity Companion</p>
+      <p>Organize your tasks, boost your productivity, and achieve your goals with our intuitive task management system. Stay on top of your daily responsibilities with ease.</p>
+      
+      <div class="cta-buttons">
+        <a href="/register" class="btn btn-primary">Get Started Free</a>
+        <a href="/login" class="btn btn-secondary">Sign In</a>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Task Management</h3>
+        <p>Create, organize, and track your tasks with priority levels and due dates</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Progress Tracking</h3>
+        <p>Visualize your completion rate and stay motivated with real-time statistics</p>
+      </div>
+
+      <!-- <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Beautiful Interface</h3>
+        <p>Enjoy a modern, responsive design with dark mode and smooth animations</p>
+      </div> -->
+
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <h3>Smart Notifications</h3>
+        <p>Get timely reminders for urgent tasks and never miss a deadline</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 TaskMaster. Built with ❤️ for productivity enthusiasts.</p>
+  </footer>
+</body>
+</html>
