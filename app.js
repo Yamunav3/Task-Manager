@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3000;
 
 // Connect to database
 // connectDB();
-const mongourl = process.env.MONGO_URI;
+const mongourl = process.env.MONGODB_URI;
 
 mongoose.connect(mongourl)
   .then(() => {
